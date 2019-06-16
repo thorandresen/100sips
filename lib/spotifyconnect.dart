@@ -155,6 +155,7 @@ class SpotifyConnectState extends State<SpotifyConnect> {
 
   Future playLocal(localFileName) async {
     pause();
+
     final dir = await getApplicationDocumentsDirectory();
     final file = new File("${dir.path}/$localFileName");
     if (!(await file.exists())) {
@@ -258,7 +259,14 @@ class SpotifyConnect extends StatefulWidget {
   }
 
   void playLocal() {
-    createState().playLocal('drikcultshaker.mp3');
+    List<String> files = [];
+    files.add('drikcultshaker.mp3');
+    files.add('skaliskib.mp3');
+    files.add('drikdrik.mp3');
+
+    Random random = new Random();
+    String localFileName = files[random.nextInt(files.length)];
+    createState().playLocal(localFileName);
   }
 }
 
@@ -345,15 +353,6 @@ class Actions extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        Container(
-          padding: EdgeInsets.all(10.0),
-          child: TextField(
-            decoration: InputDecoration(
-              hintText:
-                  'https://open.spotify.com/playlist/7x1ebdezDivH4mXAhUdR2S?si=SZUWsdmAQCOMcoknU365Bw',
-            ),
-          ),
-        ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: _mapStateToActionButtons(
@@ -372,7 +371,8 @@ class Actions extends StatelessWidget {
     Widget _start() {
       print('this is run');
       _bloc.counter_event_sink.add(IncrementEvent());
-      new Timer(const Duration(milliseconds: 200), ()=> spotifyConnect.playLocal());
+      //new Timer(const Duration(milliseconds: 200), ()=> spotifyConnect.playLocal());
+      spotifyConnect.playLocal();
       timerBloc.dispatch(Reset());
       timerBloc.dispatch(Start(duration: duration));
       return Container();
