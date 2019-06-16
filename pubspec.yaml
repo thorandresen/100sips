@@ -1,0 +1,37 @@
+name: one_hundred_sips
+description: An application that serves as a drinking game, where you take a shot&#x2F;sip of beer every minute for 60 minutes.
+version: 1.0.0+1
+author: Thor Garske Andresen<Thorg3@gmail.com>
+
+environment:
+  sdk: ">=2.1.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^0.1.2
+  spotify_playback: ^0.0.8
+  flutter_bloc: ^0.15.0
+  equatable: ^0.2.0
+  audioplayer: ^0.5.2
+  path_provider: ^1.1.0
+  volume: ^0.1.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+
+  # The following line ensures that the Material Icons font is
+  # included with your application, so that you can use the icons in
+  # the material Icons class.
+  uses-material-design: true
+
+  assets:
+    - assets/drikcultshaker.mp3
+  # To add assets to your application, add an assets section, like this:
+  # assets:
+  #  - images/a_dot_burr.jpeg
+  #  - images/a_dot_ham.jpeg
+
