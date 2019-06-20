@@ -17,6 +17,7 @@ import 'ticker.dart';
 import 'package:audioplayer/audioplayer.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:volume/volume.dart';
+import 'package:screen/screen.dart';
 
 class SpotifyConnectState extends State<SpotifyConnect> {
   bool _connectedToSpotify = false;
@@ -164,7 +165,7 @@ class SpotifyConnectState extends State<SpotifyConnect> {
       await file.writeAsBytes(bytes, flush: true);
     }
     await audioPlayer.play(file.path, isLocal: true).then((onValue) {
-      new Timer(const Duration(milliseconds: 1100), ()=> skipNextAndDownVolume());
+      new Timer(const Duration(milliseconds: 1600), ()=> skipNextAndDownVolume());
     });
   }
 
@@ -258,7 +259,7 @@ class SpotifyConnect extends StatefulWidget {
     createState().skipNext();
   }
 
-  void playLocal() {
+  void playLocal() async {
     List<String> files = [];
     files.add('drikcultshaker.mp3');
     files.add('skaliskib.mp3');
@@ -266,7 +267,7 @@ class SpotifyConnect extends StatefulWidget {
 
     Random random = new Random();
     String localFileName = files[random.nextInt(files.length)];
-    createState().playLocal(localFileName);
+    await createState().playLocal('iclyd.mp3');
   }
 }
 
@@ -279,6 +280,7 @@ class TimerClass extends StatelessWidget {
 
   TimerClass(int duration){
     this.duration = duration;
+    Screen.keepOn(true);
   }
 
   @override
