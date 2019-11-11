@@ -1,6 +1,6 @@
 # one_hundred_sips
 
-An application that serves as a drinking game, where you take a shot&#x2F;sip of beer every minute for 60 minutes.
+An application that serves as a drinking game, where you take a shot&#x2F;sip of beer every minute for 60 minutes. A newer version is created and can be found on android at: https://play.google.com/store/apps/details?id=com.thorandresen.sips
 
 ## Getting Started
 
